@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 // sql to create table
 $sql1 = "CREATE TABLE runtimebet (
 id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-timeofbet VARCHAR(100) NOT NULL,
+timeofbet VARCHAR(100) NOT NULL, /** bet session ID timeofbet **/
 betid VARCHAR(100) NOT NULL,
 ticketnumber VARCHAR(100) NOT NULL UNIQUE,
 betdata VARCHAR(100) NOT NULL,
