@@ -11,7 +11,7 @@
         $ticketnumber= $uniqueNo;
         #$ticketnumber = FLOOR(RAND() * 40) + 100;
         $betdata =  $_POST['betdata'];
-        $totallamount = 100;
+        $totallamount = $_POST['totallamount'];
         $counterno = $_POST['counterno'];
     
         mysqli_query($conn,"insert into `runtimebet` (timeofbet,betid,ticketnumber,betdata,totallamount,counterno) 

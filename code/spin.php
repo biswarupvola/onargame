@@ -13,23 +13,57 @@
   );
 
     function betStart($pusher){
-        $t=time();
+        $t="1688742709";//time();
         echo(date("Y-m-d",$t));
         $data = '{"massage":"Bet session Start, BET PLEASE","sessionId":'.$t.'}';
         $pusher->trigger('my-channel', 'my-event', $data);
 
-        sleep(10);
+        //sleep(10);
 
         $data2 = '{"massage":"No More Bet","sessionId":'.$t.'}';
         $pusher->trigger('my-channel', 'my-event', $data2);
-
-        sleep(10);
-
+        //calculate win logic
+        winCacl($t);
+        //sleep(10);
         $data3 = '{"massage":"Spinnn.............","sessionId":'.$t.'}';
         $pusher->trigger('my-channel', 'my-event', $data3);
 
     }
 
-    betStart($pusher)
+    function winCacl($id){
+        include('conn.php');
+        $sql = "SELECT * FROM runtimebet WHERE timeofbet = $id";
+        $result = $conn->query($sql);
+        $allBetData=array();
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($allBetData,$row['betdata']);
+            }
+            //print_r($allBetData);
+            for ($x = 0; $x < count($allBetData); $x++) {
+               
+              // echo "<br>The number is: $x <br>";
+              // print_r($allBetData[$x]);
+              echo gettype($allBetData[$x]);
+
+              $dollerData = json_decode($allBetData[$x]);
+              //print_r($dollerData);
+
+              for ($j = 0; $j < count($dollerData); $j++) {
+
+                echo "The number is: $x <br>";
+                print_r($dollerData[$j]);
+
+                // $amount = $allBetData[$x][$j]['amount'];
+                // echo "<br> hello : $amount<br>";
+              }
+            }
+        } else {
+            echo "No results found.";
+        }
+       
+    }
+
+    betStart($pusher);
  
 ?>
