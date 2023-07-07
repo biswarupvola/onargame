@@ -44,14 +44,14 @@
                
               // echo "<br>The number is: $x <br>";
               // print_r($allBetData[$x]);
-              echo gettype($allBetData[$x]);
+              echo "<br>".gettype($allBetData[$x])."<br>";
 
-              $dollerData = json_decode($allBetData[$x]);
+              $dollerData = json_decode($allBetData[$x],true);
               //print_r($dollerData);
 
               for ($j = 0; $j < count($dollerData); $j++) {
 
-                echo "The number is: $x <br>";
+                //echo "The number is: $x <br>";
                 print_r($dollerData[$j]);
 
                 // $amount = $allBetData[$x][$j]['amount'];
