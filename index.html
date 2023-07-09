@@ -14,9 +14,9 @@
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
-      let hh = JSON.parse(data);
-      let sId = hh['sessionId'] || "none"
-      console.log(hh,",,,,,,,,,,,,,,,,,,,",sId);
+      //let hh = JSON.parse(data);
+      let sId = data['sessionId'] || "none"
+      console.log(data,",,,,,,,,,,,,,,,,,,,",sId);
       timeOfBet = sId;
       BetArr = [];
     });
