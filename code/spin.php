@@ -94,7 +94,6 @@
     $nm = $winNumber;
     if (in_array($winNumber, $arr)){
       $nm = generateWinNUmber($arr);
-      echo "gelo";
     }
     return $nm;
   }
