@@ -6,9 +6,7 @@
 
         $counterid = "C".abs( crc32( uniqid() ) ); //unique number
         $counterno = $_POST['counterno'];
-        $addresss=$_POST['addresss'];
         $balance= $_POST['balance'];
-        $isactive= "0";
         
         mysqli_query($conn,"insert into `countertable` (counterid,counterno,addresss,balance,isactive) 
         values 
